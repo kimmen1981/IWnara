@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function SiteFooter() {return <footer className="border-t border-line"><div className="page-width flex flex-col gap-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"><p>IW nära <span className="mx-3 text-white/30">/</span> Ditt lokala gym.</p><div className="flex gap-6"><Link className="nav-link" href="/sorberge">Sörberge</Link><Link className="nav-link" href="/skonsmon">Skönsmon</Link></div></div></footer>}

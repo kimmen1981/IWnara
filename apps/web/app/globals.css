@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@font-face {font-family:Montserrat;src:url('/brand/montserrat.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+:root {--background:#090909;--foreground:#ededed;--surface:#111111;--muted:#ababab;--line:#292929;}
+@theme inline {--color-background:var(--background);--color-foreground:var(--foreground);--color-surface:var(--surface);--color-muted:var(--muted);--color-line:var(--line);--font-sans:Montserrat,Arial,Helvetica,sans-serif;}
+@layer base {body{@apply bg-background text-foreground font-sans antialiased;}section,main{scroll-margin-top:2rem;}a:focus-visible{outline:2px solid white;outline-offset:6px;}::selection{background:#ededed;color:#090909;}}
+@layer components {
+.page-width{@apply mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16;}
+.site-header{@apply relative z-20 border-b border-white/10 bg-background;}
+.eyebrow{@apply text-xs font-semibold uppercase tracking-[0.22em] sm:text-sm;}
+.selector-main{position:relative;isolation:isolate;min-height:calc(100svh - 175px);display:flex;align-items:center;}
+.selector-background{z-index:-3;object-position:center 45%;}
+.selector-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.54) 45%,#090909 100%);}
+.selector-heading{@apply mt-6 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-6xl lg:text-7xl;}
+.facility-choice{@apply block rounded-lg border border-white/25 bg-white/[0.07] p-7 backdrop-blur-xl transition-colors hover:border-white/60 hover:bg-white/[0.14] sm:p-9;}
+.choice-arrow{@apply flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-xl transition-colors group-hover:bg-white group-hover:text-black;}
+.facility-nav{@apply flex w-full flex-wrap gap-x-6 gap-y-4 text-sm text-muted lg:ml-auto lg:w-auto;}
+.facility-nav a:hover{@apply text-white;}
+.location-label{@apply border-l border-line pl-5 text-sm font-medium sm:mr-auto;}
+.change-link{@apply text-white;}
+.facility-hero{position:relative;isolation:isolate;overflow:hidden;}
+.facility-hero-pending{background:radial-gradient(ellipse at 85% 25%,#32302d 0%,#151514 35%,#090909 75%);}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.25));}
+.section-shell{@apply border-b border-line py-14 last:border-b-0 md:grid md:grid-cols-2 md:gap-12 md:py-20;}
+.body-copy{@apply text-base leading-relaxed text-muted sm:text-lg;}
+.detail-label{@apply mb-2 block text-xs font-medium uppercase tracking-widest text-muted;}
+.nav-link{@apply underline-offset-4 hover:underline;}
+.button{@apply inline-flex min-h-12 items-center justify-center rounded-sm border border-white/25 bg-white/10 px-6 py-4 text-sm font-semibold transition-colors hover:bg-white/20;}
+.button-light{@apply border-white bg-foreground text-background hover:bg-white;}
+.membership-card{@apply rounded-lg border border-line bg-background p-7;}
+.skip-link{@apply fixed left-4 top-4 z-50 -translate-y-24 bg-white p-4 text-black focus:translate-y-0;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+/* Silver relief inspired by the supplied physical IW nära sign. */
+.brand-link { display: block; width: 196px; }
+.brand-relief { display:block; width:100%; height:auto; filter:drop-shadow(0 5px 5px #000); mask-image:radial-gradient(ellipse 70% 68% at 50% 50%,#000 48%,transparent 100%); }
+.site-header { background:linear-gradient(120deg,#191918 0%,#0d0d0c 45%,#090909 100%); }
+.metal-text { color:#e4e3df; text-shadow:0 -1px 0 #fff,1px 1px 0 #a7a6a2,2px 2px 0 #777671,3px 3px 0 #42423f,4px 4px 0 #20201e,5px 7px 9px #000; }
+.metal-secondary { color:#bab9b5; }
+.location-label.metal-text { font-size:1.125rem; font-weight:650; letter-spacing:.025em; }
+.metal-nav,.facility-nav a { color:#d0cfcb; font-weight:600; text-shadow:0 -1px 0 #ffffff40,1px 1px 0 #4f4e4b,2px 3px 3px #000; }
+.selector-background,.mood-background { filter:saturate(.35) sepia(.14); }
+.selector-shade { background:linear-gradient(180deg,rgba(9,8,7,.37),rgba(9,8,7,.55) 52%,#090909 100%); }
+.hero-shade { background:linear-gradient(90deg,rgba(9,8,7,.88),rgba(9,8,7,.58) 55%,rgba(9,8,7,.25)); }
+.facility-choice { background:rgba(23,21,18,.64); }
+@media(max-width:639px) {
+ .brand-link {width:158px;}
+ .site-header .page-width {column-gap:1rem;row-gap:1.1rem;}
+ .site-header nav[aria-label="Anläggningar"] {gap:1rem;font-size:.8125rem;}
+ .metal-text {text-shadow:0 -1px 0 #fff,1px 1px 0 #92918d,2px 2px 0 #4b4a46,3px 4px 5px #000;}
+ .selector-background {object-position:43% center;}
+}
