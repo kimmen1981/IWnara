@@ -4,11 +4,15 @@
 @theme inline {--color-background:var(--background);--color-foreground:var(--foreground);--color-surface:var(--surface);--color-muted:var(--muted);--color-line:var(--line);--font-sans:Montserrat,Arial,Helvetica,sans-serif;}
 @layer base {body{@apply bg-background text-foreground font-sans antialiased;}section,main{scroll-margin-top:2rem;}a:focus-visible{outline:2px solid white;outline-offset:6px;}::selection{background:#ededed;color:#090909;}}
 @layer components {
-.page-width{@apply mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16;}
+.page-width{@apply mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16;}
 .site-header{@apply relative z-20 border-b border-white/10 bg-background;}
 .eyebrow{@apply text-xs font-semibold uppercase tracking-[0.22em] sm:text-sm;}
-.selector-main{position:relative;isolation:isolate;min-height:calc(100svh - 175px);display:flex;align-items:center;}
-.selector-background{z-index:-3;object-position:center 45%;}
+.selector-main{position:relative;isolation:isolate;min-height:calc(100svh - 104px);display:flex;align-items:center;overflow:hidden;}
+.selector-background{position:absolute;inset:0;z-index:-3;display:grid;grid-template-columns:1fr 1fr;filter:saturate(.72) sepia(.08);}
+.selector-image{position:relative;min-width:0;overflow:hidden;}
+.selector-image img{object-fit:cover;}
+.selector-image-left img{object-position:52% center;}
+.selector-image-right img{object-position:47% center;}
 .selector-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.54) 45%,#090909 100%);}
 .selector-heading{@apply mt-6 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-6xl lg:text-7xl;}
 .facility-choice{@apply block rounded-lg border border-white/25 bg-white/[0.07] p-7 backdrop-blur-xl transition-colors hover:border-white/60 hover:bg-white/[0.14] sm:p-9;}
@@ -32,21 +36,35 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important;}}
 
 /* Silver relief inspired by the supplied physical IW nära sign. */
-.brand-link { display: block; width: 196px; }
-.brand-relief { display:block; width:100%; height:auto; filter:drop-shadow(0 5px 5px #000); mask-image:radial-gradient(ellipse 70% 68% at 50% 50%,#000 48%,transparent 100%); }
+.brand-link { display:block; width:196px; aspect-ratio:1881/836; overflow:hidden; border-radius:.45rem; background:#101010; }
+.brand-relief { display:block; width:100%; height:100%; object-fit:cover; transform:scale(1.035); filter:drop-shadow(0 4px 4px #000); }
 .site-header { background:linear-gradient(120deg,#191918 0%,#0d0d0c 45%,#090909 100%); }
 .metal-text { color:#e4e3df; text-shadow:0 -1px 0 #fff,1px 1px 0 #a7a6a2,2px 2px 0 #777671,3px 3px 0 #42423f,4px 4px 0 #20201e,5px 7px 9px #000; }
 .metal-secondary { color:#bab9b5; }
 .location-label.metal-text { font-size:1.125rem; font-weight:650; letter-spacing:.025em; }
 .metal-nav,.facility-nav a { color:#d0cfcb; font-weight:600; text-shadow:0 -1px 0 #ffffff40,1px 1px 0 #4f4e4b,2px 3px 3px #000; }
-.selector-background,.mood-background { filter:saturate(.35) sepia(.14); }
+.mood-background { filter:saturate(.35) sepia(.14); }
 .selector-shade { background:linear-gradient(180deg,rgba(9,8,7,.37),rgba(9,8,7,.55) 52%,#090909 100%); }
 .hero-shade { background:linear-gradient(90deg,rgba(9,8,7,.88),rgba(9,8,7,.58) 55%,rgba(9,8,7,.25)); }
 .facility-choice { background:rgba(23,21,18,.64); }
 @media(max-width:639px) {
- .brand-link {width:158px;}
- .site-header .page-width {column-gap:1rem;row-gap:1.1rem;}
- .site-header nav[aria-label="Anläggningar"] {gap:1rem;font-size:.8125rem;}
+ html,body{overflow-x:hidden;}
+ .brand-link {width:136px;}
+ .site-header .page-width {column-gap:.75rem;row-gap:.85rem;padding-top:.75rem;padding-bottom:.75rem;}
+ .site-header nav[aria-label="Anläggningar"] {gap:.8rem;font-size:.75rem;}
  .metal-text {text-shadow:0 -1px 0 #fff,1px 1px 0 #92918d,2px 2px 0 #4b4a46,3px 4px 5px #000;}
- .selector-background {object-position:43% center;}
+ .selector-main{min-height:auto;align-items:flex-start;}
+ .selector-background{grid-template-columns:1fr;grid-template-rows:44% 56%;}
+ .selector-image-left img{object-position:50% 54%;}
+ .selector-image-right img{object-position:50% 61%;}
+ .selector-main>.page-width{padding-top:2.5rem;padding-bottom:2.75rem;}
+ .selector-heading{font-size:clamp(2.15rem,11vw,3.25rem);line-height:1.08;}
+ .facility-choice{padding:1.25rem;}
+ .facility-choice h3{font-size:2rem;}
+ .location-label{order:3;width:100%;border-left:0;border-top:1px solid var(--line);padding:.75rem 0 0;font-size:1rem!important;}
+ .facility-nav{flex-wrap:nowrap;gap:1rem;overflow-x:auto;padding-bottom:.2rem;white-space:nowrap;scrollbar-width:none;}
+ .facility-nav::-webkit-scrollbar{display:none;}
+ .section-shell{padding-top:2.75rem;padding-bottom:2.75rem;}
+ .membership-card{padding:1.25rem;}
 }
+@media(min-width:640px) and (max-width:1023px){.selector-main{min-height:calc(100svh - 112px)}.selector-main>.page-width{padding-top:4rem;padding-bottom:4rem}.facility-choice{padding:1.75rem}}

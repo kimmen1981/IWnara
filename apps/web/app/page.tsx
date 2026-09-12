@@ -8,7 +8,10 @@ export const metadata: Metadata = { alternates: { canonical: "https://www.iwnara
 export default function Home() {
  return <><a className="skip-link" href="#main">Hoppa till innehållet</a><SiteHeader />
  <main id="main" tabIndex={-1} className="selector-main">
- <Image src="/brand/iw-mood-montage.png" alt="" fill priority sizes="100vw" className="selector-background object-cover" />
+ <div className="selector-background" aria-hidden="true">
+  <div className="selector-image selector-image-left"><Image src="/brand/hero-building-left.jpeg" alt="" fill priority sizes="(min-width: 768px) 50vw, 100vw" /></div>
+  <div className="selector-image selector-image-right"><Image src="/brand/hero-window-right-evening.png" alt="" fill priority sizes="(min-width: 768px) 50vw, 100vw" /></div>
+ </div>
  <div className="selector-shade" />
  <div className="page-width relative z-10 py-14 sm:py-20">
  <div className="mx-auto max-w-4xl text-center"><p className="eyebrow">Ditt lokala gym</p><h1 className="selector-heading metal-text">Träna på dina villkor.<br/><span className="metal-secondary">Nära dig.</span></h1><p className="mt-6 text-base leading-7 text-white/75 sm:text-lg">Personliga gym i Timrå och Sundsvall. Välj din anläggning och prova ett pass gratis.</p></div>
