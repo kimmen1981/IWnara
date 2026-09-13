@@ -9,8 +9,8 @@ export default function Home() {
  return <><a className="skip-link" href="#main">Hoppa till innehållet</a><SiteHeader />
  <main id="main" tabIndex={-1} className="selector-main">
  <div className="selector-background" aria-hidden="true">
-  <div className="selector-image selector-image-left"><Image src="/brand/hero-building-left.jpeg" alt="" fill priority sizes="(min-width: 768px) 50vw, 100vw" /></div>
-  <div className="selector-image selector-image-right"><Image src="/brand/hero-window-right-evening.png" alt="" fill priority sizes="(min-width: 768px) 50vw, 100vw" /></div>
+  <div className="selector-image selector-image-left"><Image src="/brand/hero-gym-left.jpeg" alt="" fill priority sizes="(min-width: 768px) 58vw, 100vw" /></div>
+  <div className="selector-image selector-image-right"><Image src="/brand/hero-gym-right.jpeg" alt="" fill priority sizes="(min-width: 768px) 58vw, 100vw" /></div>
  </div>
  <div className="selector-shade" />
  <div className="page-width relative z-10 py-14 sm:py-20">
