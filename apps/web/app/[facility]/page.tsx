@@ -27,9 +27,9 @@ export default async function FacilityPage({ params }: Props) {
   const hero = f.photos.find(p => p.src.includes("interior") || p.src.includes("strength")) ?? f.photos[0];
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(f.address)}`;
   const faqs = [
-    { question: `När är gymmet i ${f.name} öppet?`, answer: `${f.hours}. Du låser upp med din app och tränar när det passar dig under öppettiderna.` },
+    { question: `När är gymmet i ${f.name} öppet?`, answer: f.openingNotice ? `${f.hours} Vi bygger för fullt och beräknar att gymmet är helt klart före årsskiftet 2026/2027. Därefter planerar vi för öppet dygnet runt med appaccess.` : `${f.hours}. Du låser upp med din app och tränar när det passar dig under öppettiderna.` },
     { question: "Kan jag få hjälp även om gymmet är obemannat?", answer: siteConfig.support },
-    { question: "Vad ingår när jag provar gratis?", answer: "Du som är intresserad av ett medlemskap får ett gratis träningspass, en genomgång av maskinerna och hjälp med ett individuellt träningsschema. Kontakta oss för att komma överens om en tid." },
+    { question: "Vad ingår när jag provar gratis?", answer: "Du som är intresserad av ett medlemskap får ett gratis träningspass, en visning av gymmet och dess utrustning och hjälp med ett individuellt träningsschema. Kontakta oss för att komma överens om en tid." },
     { question: "Kan ni hjälpa mig med träning och kost?", answer: siteConfig.team },
   ];
   return <>
@@ -43,6 +43,7 @@ export default async function FacilityPage({ params }: Props) {
           <p className="eyebrow mt-10">IW nära · {f.area}</p>
           <h1 id="facility-heading" className="metal-text mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">Gym i {f.name},<br />nära dig i {f.area}.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/85">{f.intro}</p>
+          {f.openingNotice && <div className="mt-8 max-w-2xl rounded-lg border border-white/20 bg-black/40 p-5 sm:p-7"><h2 className="text-xl font-semibold sm:text-2xl">Kom och upptäck ditt nya gym – redan i oktober.</h2><p className="mt-4 text-base leading-7 text-white/85">{f.openingNotice}</p></div>}
           <div className="mt-8 flex flex-wrap gap-3"><a className="button button-light" href="#prova-gratis">Prova ett pass gratis</a><a className="button" href="#bilder">Se gymmet</a></div>
         </div>
       </section>
@@ -51,7 +52,7 @@ export default async function FacilityPage({ params }: Props) {
       <FacilityGallery facility={f} />
       <section id="prova-gratis" aria-labelledby="trial-heading" className="border-y border-line bg-surface py-16 sm:py-20"><div className="page-width grid gap-10 md:grid-cols-2">
         <div><p className="eyebrow text-muted">Prova IW nära {f.name}</p><h2 id="trial-heading" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Första passet bjuder vi på.</h2><p className="body-copy mt-6">{siteConfig.trial}</p><a className="button button-light mt-7" href="#kontakt">Kontakta oss för provträning</a></div>
-        <div className="rounded-lg border border-line bg-background p-7 sm:p-9"><h3 className="text-xl font-semibold">En start som passar dig</h3><ul className="mt-6 space-y-5 text-muted"><li>✓ Ett gratis träningspass för dig som funderar på medlemskap</li><li>✓ Personlig visning av maskinerna</li><li>✓ Träningsschema och individuellt program efter dina mål</li></ul><p className="mt-7 text-sm leading-7 text-muted">{siteConfig.team}</p></div>
+        <div className="rounded-lg border border-line bg-background p-7 sm:p-9"><h3 className="text-xl font-semibold">En start som passar dig</h3><ul className="mt-6 space-y-5 text-muted"><li>✓ Ett gratis träningspass för dig som funderar på medlemskap</li><li>✓ Personlig visning av gymmet och dess utrustning</li><li>✓ Träningsschema och individuellt program efter dina mål</li></ul><p className="mt-7 text-sm leading-7 text-muted">{siteConfig.team}</p></div>
       </div></section>
       <div className="page-width"><Section id="filosofi" number="02" title="Mycket gym. Mycket omtanke."><p className="body-copy">{siteConfig.philosophy}</p></Section></div>
       <section id="medlemskap" className="border-y border-line bg-surface py-16 sm:py-20" aria-labelledby="membership-heading"><div className="page-width"><p className="eyebrow text-muted">Medlemskap · {f.name}</p><h2 id="membership-heading" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Hitta ditt medlemskap.</h2><div className={`mt-9 grid gap-4 ${f.memberships.length > 1 ? "lg:grid-cols-3" : "max-w-2xl"}`}>{f.memberships.map(m => <article key={m.name} className="membership-card"><h3 className="text-lg font-medium">{m.name}</h3><p className="mt-7 text-3xl font-semibold">{m.price}</p><p className="mt-4 text-sm leading-6 text-muted">{m.detail}</p><a href="#kontakt" className="button mt-8 w-full">Fråga om medlemskap</a></article>)}</div></div></section>

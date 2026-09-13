@@ -18,7 +18,7 @@
 .selector-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.54) 45%,#090909 100%);}
 .selector-heading{@apply mt-6 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-6xl lg:text-7xl;}
 .facility-choice{@apply block rounded-lg border border-white/25 bg-white/[0.07] p-7 backdrop-blur-xl transition-colors hover:border-white/60 hover:bg-white/[0.14] sm:p-9;}
-.choice-arrow{@apply flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-xl transition-colors group-hover:bg-white group-hover:text-black;}
+.choice-arrow{@apply flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors group-hover:border-white/70;}
 .facility-nav{@apply flex w-full flex-wrap gap-x-6 gap-y-4 text-sm text-muted lg:ml-auto lg:w-auto;}
 .facility-nav a:hover{@apply text-white;}
 .location-label{@apply border-l border-line pl-5 text-sm font-medium sm:mr-auto;}

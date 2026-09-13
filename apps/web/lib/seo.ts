@@ -20,10 +20,10 @@ export function facilityStructuredData(facility: Facility) {
     ...(facility.email ? { email: facility.email } : {}),
     telephone: facility.phones[0],
     contactPoint: facility.phones.map(phone => ({ "@type": "ContactPoint", telephone: phone, contactType: "customer service", availableLanguage: "Swedish" })),
-    openingHoursSpecification: [{
+    ...(!facility.openingNotice ? { openingHoursSpecification: [{
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       opens: facility.opens, closes: facility.closes,
-    }],
+    }] } : {}),
   };
 }

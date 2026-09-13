@@ -1,7 +1,7 @@
 export type GymPhoto = { src: string; alt: string; caption: string; width: number; height: number };
 export type Facility = {
   slug: string; name: string; area: string; title: string; description: string;
-  intro: string; about: string; address: string; street: string; postalCode?: string;
+  intro: string; about: string; openingNotice?: string; address: string; street: string; postalCode?: string;
   hours: string; opens: string; closes: string; email?: string; phones: readonly string[];
   photos: readonly GymPhoto[];
   memberships: readonly { name: string; price: string; detail: string }[];
@@ -14,7 +14,7 @@ export const siteConfig = {
   navigation: [{ label: "Om gymmet", href: "#om-gymmet" }, { label: "Bilder", href: "#bilder" }, { label: "Prova gratis", href: "#prova-gratis" }, { label: "Medlemskap", href: "#medlemskap" }, { label: "Kontakt", href: "#kontakt" }],
   support: "Hos oss betyder obemannat att du låser upp med din app och tränar på egen hand. Den personliga kontakten finns ändå nära. Vi lär känna våra medlemmar och finns ett samtal bort när du behöver hjälp med ett träningsupplägg, har frågor om kost eller stöter på något som krånglar. Du ska känna att du har någon att vända dig till.",
   team: "Vår personal är utbildade personliga tränare med kunskap inom både träning och kost. Vi utgår från dig, din erfarenhet och dina mål – oavsett om du tar ditt första steg in på ett gym eller vill utveckla träningen du redan gör.",
-  trial: "Funderar du på att bli medlem? Välkommen att prova ett träningspass gratis. Vi visar dig maskinerna och hjälper dig att komma igång med ett träningsschema och ett individuellt program som passar just dig. Hör av dig så kommer vi överens om en tid för ditt besök och din genomgång.",
+  trial: "Funderar du på att bli medlem? Välkommen att prova ett träningspass gratis. Vi visar dig gymmet och dess utrustning och hjälper dig att komma igång med ett träningsschema och ett individuellt program som passar just dig. Hör av dig så kommer vi överens om en tid för ditt besök och din genomgång.",
   philosophy: "Vår filosofi är enkel: vi vill hålla priserna så låga som möjligt och ge dig mycket gym för pengarna. Därför handplockar vi den utrustning vi tycker är bäst från olika märken och lägger omtanke på rena, fräscha och mysiga lokaler. Lägg till personlig hjälp med din träning, så har du det vi vill att IW nära ska stå för. Kom och prova – vi vill att du ska känna skillnaden själv.",
 } as const;
 export const facilities: readonly Facility[] = [
@@ -35,12 +35,13 @@ export const facilities: readonly Facility[] = [
   },
   {
     phones: siteConfig.phones, slug: "skonsmon", name: "Skönsmon", area: "Sundsvall",
-    title: "Gym i Skönsmon, Sundsvall – öppet dygnet runt | IW nära",
-    description: "IW nära Skönsmon på Fridhemsgatan 71 i Sundsvall. Gym öppet dygnet runt med appaccess, personlig hjälp och gratis provträning med träningsprogram.",
-    intro: "Ditt gym i Skönsmon, Sundsvall – öppet dygnet runt på Fridhemsgatan 71. Kom in med din app och träna när det passar dig, med personlig hjälp nära till hands.",
-    about: "På IW nära Skönsmon får du plats för träning på dina egna tider. Gymmet på Fridhemsgatan 71 i Sundsvall är öppet dygnet runt, så du kan välja en tid som passar jobbet, familjen och resten av livet. Här finns handplockad utrustning i en varm, ombonad miljö. Vi vill att du ska känna dig hemma från ditt första besök och trygg med hur du tränar.",
+    title: "Nytt gym i Skönsmon, Sundsvall – välkommen i oktober | IW nära",
+    description: "Vi bygger IW nära Skönsmon på Fridhemsgatan 71 i Sundsvall. Från mitten av oktober 2026: besök och provträning alla vardagar. Beräknas klart före årsskiftet.",
+    intro: "Något nytt växer fram i Skönsmon. Just nu bygger vi för fullt på Fridhemsgatan 71 – ett personligt gym med handplockad utrustning och en varm miljö där du ska känna dig hemma.",
+    openingNotice: "Vi beräknar att gymmet är helt klart före årsskiftet 2026/2027, men du behöver inte vänta tills dess för att lära känna oss. Från mitten av oktober 2026 håller vi dörrarna öppna alla vardagar. Kom in, se hur gymmet växer fram, prova träningen och träffa oss bakom IW nära. Känns det rätt kan du boka ditt medlemskap redan vid besöket. Letar du efter ditt nästa gym? Ge oss ett besök innan du bestämmer dig – känn på utrustningen, upplev miljön och upptäck om det är här du vill träna. Vi ser fram emot att välkomna dig!",
+    about: "På IW nära Skönsmon får du plats för träning på dina egna tider. När gymmet på Fridhemsgatan 71 i Sundsvall är färdigt planerar vi för öppet dygnet runt, så att du kan välja en tid som passar jobbet, familjen och resten av livet. Här skapar vi en varm, ombonad miljö med handplockade maskiner, hantlar och skivstänger. Vi vill att du ska känna dig hemma från ditt första besök och trygg med hur du tränar.",
     address: "Fridhemsgatan 71, Sundsvall", street: "Fridhemsgatan 71",
-    hours: "Dygnet runt, alla dagar", opens: "00:00", closes: "23:59",
+    hours: "Öppna dörrar alla vardagar från mitten av oktober 2026. Kontakta oss för besökstider.", opens: "00:00", closes: "23:59",
     photos: [
       { src: "/facilities/skonsmon-interior.jpeg", alt: "Styrkemaskiner och varm belysning inne på IW nära Skönsmon i Sundsvall", caption: "Träningsmiljön på IW nära Skönsmon", width: 1086, height: 1448 },
       { src: "/facilities/skonsmon-exterior.jpeg", alt: "Entrén till IW nära Skönsmon på Fridhemsgatan 71 i Sundsvall", caption: "Här hittar du oss – Fridhemsgatan 71", width: 1567, height: 1004 },
