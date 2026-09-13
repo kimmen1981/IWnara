@@ -1,7 +1,7 @@
 export type GymPhoto = { src: string; alt: string; caption: string; width: number; height: number };
 export type Facility = {
   slug: string; name: string; area: string; title: string; description: string;
-  intro: string; about: string; openingNotice?: string; address: string; street: string; postalCode?: string;
+  intro: string; about: string; openingNotice?: string; openingLink?: { label: string; href: string }; address: string; street: string; postalCode?: string;
   hours: string; opens: string; closes: string; email?: string; phones: readonly string[];
   photos: readonly GymPhoto[];
   memberships: readonly { name: string; price: string; detail: string }[];
@@ -38,7 +38,8 @@ export const facilities: readonly Facility[] = [
     title: "Nytt gym i Skönsmon, Sundsvall – välkommen i oktober | IW nära",
     description: "Vi bygger IW nära Skönsmon på Fridhemsgatan 71 i Sundsvall. Från mitten av oktober 2026: besök och provträning alla vardagar. Beräknas klart före årsskiftet.",
     intro: "Något nytt växer fram i Skönsmon. Just nu bygger vi för fullt på Fridhemsgatan 71 – ett personligt gym med handplockad utrustning och en varm miljö där du ska känna dig hemma.",
-    openingNotice: "Vi beräknar att gymmet är helt klart före årsskiftet 2026/2027, men du behöver inte vänta tills dess för att lära känna oss. Från mitten av oktober 2026 håller vi dörrarna öppna alla vardagar. Kom in, se hur gymmet växer fram, prova träningen och träffa oss bakom IW nära. Känns det rätt kan du boka ditt medlemskap redan vid besöket. Letar du efter ditt nästa gym? Ge oss ett besök innan du bestämmer dig – känn på utrustningen, upplev miljön och upptäck om det är här du vill träna. Vi ser fram emot att välkomna dig!",
+    openingNotice: "Vi bygger för fullt och vill gärna visa vad som växer fram på Fridhemsgatan 71. Kom och träffa oss, följ bygget och anmäl ditt intresse för medlemskap inför öppningen. Vi berättar gärna om planerna, visar maskinerna, öppningsdatum och hur du kan bli medlem när gymmet öppnar. Under tiden kan du lösa medlemskap och träna på vår anläggning i centrum – Iron Works på Södra Järnvägsgatan.",
+    openingLink: { label: "Besök Iron Works i centrum", href: "https://www.ironworksgym.se/" },
     about: "På IW nära Skönsmon får du plats för träning på dina egna tider. När gymmet på Fridhemsgatan 71 i Sundsvall är färdigt planerar vi för öppet dygnet runt, så att du kan välja en tid som passar jobbet, familjen och resten av livet. Här skapar vi en varm, ombonad miljö med handplockade maskiner, hantlar och skivstänger. Vi vill att du ska känna dig hemma från ditt första besök och trygg med hur du tränar.",
     address: "Fridhemsgatan 71, Sundsvall", street: "Fridhemsgatan 71",
     hours: "Öppna dörrar alla vardagar från mitten av oktober 2026. Kontakta oss för besökstider.", opens: "00:00", closes: "23:59",

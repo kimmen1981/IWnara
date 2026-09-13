@@ -43,7 +43,7 @@ export default async function FacilityPage({ params }: Props) {
           <p className="eyebrow mt-10">IW nära · {f.area}</p>
           <h1 id="facility-heading" className="metal-text mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">Gym i {f.name},<br />nära dig i {f.area}.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/85">{f.intro}</p>
-          {f.openingNotice && <div className="mt-8 max-w-2xl rounded-lg border border-white/20 bg-black/40 p-5 sm:p-7"><h2 className="text-xl font-semibold sm:text-2xl">Kom och upptäck ditt nya gym – redan i oktober.</h2><p className="mt-4 text-base leading-7 text-white/85">{f.openingNotice}</p></div>}
+          {f.openingNotice && <div className="mt-8 max-w-2xl rounded-lg border border-white/20 bg-black/40 p-5 sm:p-7"><h2 className="text-xl font-semibold sm:text-2xl">Öppet hus i Skönsmon</h2><p className="mt-4 text-base leading-7 text-white/85">{f.openingNotice}</p>{f.openingLink && <a className="mt-5 inline-flex text-sm font-medium text-white underline decoration-white/40 underline-offset-4 hover:decoration-white" href={f.openingLink.href} target="_blank" rel="noreferrer">{f.openingLink.label} ↗</a>}</div>}
           <div className="mt-8 flex flex-wrap gap-3"><a className="button button-light" href="#prova-gratis">Prova ett pass gratis</a><a className="button" href="#bilder">Se gymmet</a></div>
         </div>
       </section>
