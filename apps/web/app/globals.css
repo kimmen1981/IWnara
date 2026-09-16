@@ -30,8 +30,47 @@
 .body-copy{@apply text-base leading-relaxed text-muted sm:text-lg;}
 .detail-label{@apply mb-2 block text-xs font-medium uppercase tracking-widest text-muted;}
 .nav-link{@apply underline-offset-4 hover:underline;}
-.button{@apply inline-flex min-h-12 items-center justify-center rounded-sm border border-white/25 bg-white/10 px-6 py-4 text-sm font-semibold transition-colors hover:bg-white/20;}
-.button-light{@apply border-white bg-foreground text-background hover:bg-white;}
+.button{@apply inline-flex min-h-12 items-center justify-center rounded-sm border border-white/25 bg-white/10 px-6 py-4 text-sm font-semibold transition-[background-color,border-color,box-shadow,transform] hover:bg-white/20;}
+.button-light{
+  color:#11110f;
+  border-color:#f8f7f2 #bebdb7 #8d8c87;
+  border-radius:.35rem;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(255,255,255,.88) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 76% 72%,rgba(103,102,97,.13) 0 1px,transparent 1.6px),
+    linear-gradient(145deg,#fff 0%,#e8e7e2 46%,#c9c8c2 100%);
+  background-size:17px 19px,23px 21px,100% 100%;
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,.95),
+    inset 0 -2px 2px rgba(70,69,65,.22),
+    0 1px 0 #777671,
+    0 4px 0 #4b4a47,
+    0 8px 13px rgba(0,0,0,.55);
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
+}
+.button-light:hover{
+  border-color:#fff #d3d2cc #9c9b95;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(255,255,255,.9) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 76% 72%,rgba(103,102,97,.11) 0 1px,transparent 1.6px),
+    linear-gradient(145deg,#fff 0%,#f2f1ec 46%,#d8d7d1 100%);
+  background-size:17px 19px,23px 21px,100% 100%;
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,1),
+    inset 0 -2px 2px rgba(70,69,65,.18),
+    0 1px 0 #85847f,
+    0 5px 0 #555450,
+    0 10px 17px rgba(0,0,0,.6);
+  transform:translateY(-1px);
+}
+.button-light:active{
+  transform:translateY(3px);
+  box-shadow:
+    inset 0 2px 3px rgba(78,77,72,.24),
+    inset 0 -1px 1px rgba(255,255,255,.7),
+    0 1px 0 #555450,
+    0 3px 7px rgba(0,0,0,.45);
+}
 .membership-card{@apply rounded-lg border border-line bg-background p-7;}
 .skip-link{@apply fixed left-4 top-4 z-50 -translate-y-24 bg-white p-4 text-black focus:translate-y-0;}
 }
@@ -72,3 +111,16 @@
  .membership-card{padding:1.25rem;}
 }
 @media(min-width:640px) and (max-width:1023px){.selector-main{min-height:calc(100svh - 112px)}.selector-main>.page-width{padding-top:4rem;padding-bottom:4rem}.facility-choice{padding:1.75rem}}
+
+/* Native details works with keyboard and without client JavaScript. */
+.faq-categories .button { min-height:44px; padding:.65rem .9rem; font-size:.75rem; line-height:1.5; }
+.faq-item + .faq-item { border-top:1px solid var(--line); }
+.faq-item { scroll-margin-top:2rem; }
+.faq-item summary { display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:64px; padding:1.2rem 1.25rem; cursor:pointer; list-style:none; font-size:1rem; font-weight:550; line-height:1.6; }
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-item summary:hover { background:rgba(255,255,255,.035); }
+.faq-item summary:focus-visible { outline:2px solid var(--foreground); outline-offset:-4px; border-radius:.35rem; }
+.faq-icon { flex-shrink:0; transition:transform 160ms ease; }
+.faq-item[open] .faq-icon { transform:rotate(180deg); }
+.faq-answer { padding:0 1.25rem 1.25rem; color:var(--muted); font-size:1rem; line-height:1.8; overflow-wrap:anywhere; }
+@media(min-width:640px) { .faq-item summary { padding:1.35rem 1.5rem; } .faq-answer { padding:0 1.5rem 1.5rem; } }

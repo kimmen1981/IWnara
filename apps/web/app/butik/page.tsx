@@ -4,58 +4,47 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { products, shopConfig } from "@/lib/shop-config";
 import { pageUrl } from "@/lib/seo";
-import { CopySwish } from "./copy-swish";
+import { SwishPayment } from "./swish-payment";
+import { ProductIllustration } from "./product-illustration";
 
 export const metadata: Metadata = {
   title: "Butik – handla på gymmet | IW nära",
-  description: "Handla enkelt på IW nära. Se produkter och priser och betala med Swish när du är på gymmet.",
+  description: "Se produkter och priser i gymmet. Välj ditt tillskott och betala enkelt med Swish till IW nära.",
   alternates: { canonical: pageUrl("/butik") },
 };
-
-const priceFormat = new Intl.NumberFormat("sv-SE", { style: "currency", currency: "SEK", maximumFractionDigits: 2 });
 
 export default function ShopPage() {
   return <>
     <a className="skip-link" href="#main">Hoppa till innehållet</a>
     <SiteHeader />
-    <main id="main" tabIndex={-1} className="page-width py-10 sm:py-16">
+    <main id="main" tabIndex={-1} className="page-width py-8 sm:py-14">
       <div className="max-w-2xl">
         <p className="eyebrow text-muted">Handla på gymmet</p>
-        <h1 className="metal-text mt-4 text-4xl font-semibold sm:text-6xl">Butiken på IW nära</h1>
-        <p className="body-copy mt-6">Välj det du behöver på plats och betala enkelt med Swish.</p>
+        <h1 className="metal-text mt-3 text-4xl font-semibold sm:text-6xl">Butiken på IW nära</h1>
+        <p className="body-copy mt-4">Välj din produkt. Swisha. Klart.</p>
+        <p className="mt-2 text-sm leading-6 text-muted">Ta din vara på plats och betala med knappen nedan.</p>
       </div>
-      <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
-        <section aria-labelledby="products-heading" className="min-w-0">
-          <h2 id="products-heading" className="text-2xl font-semibold">Produkter & priser</h2>
-          {products.length ? <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-            {products.map(product => <li key={product.name} className="membership-card flex min-w-0 flex-col">
-              {product.image && <Image src={product.image} alt={product.name} width={480} height={480} sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw" className="mb-5 aspect-square w-full rounded-sm object-contain" />}
-              <h3 className="break-words text-xl font-semibold">{product.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{product.description}</p>
-              <p className="mt-auto pt-5 text-2xl font-semibold">{priceFormat.format(product.price)}</p>
-            </li>)}
-          </ul> : <div className="membership-card mt-6">
-            <h3 className="text-lg font-semibold">Produktlistan kommer snart</h3>
-            <p className="mt-3 leading-7 text-muted">Se aktuellt sortiment och priser på plats i gymmet. Är du osäker på något? Kontakta oss innan du betalar.</p>
-          </div>}
-        </section>
-        <section aria-labelledby="payment-heading" className="membership-card bg-surface">
-          <p className="eyebrow text-muted">Enkelt på plats</p>
-          <h2 id="payment-heading" className="mt-3 text-2xl font-semibold">Betala med Swish</h2>
-          <ol className="mt-6 list-decimal space-y-4 pl-5 text-sm leading-6 text-muted">
-            <li>Kontrollera priset på varorna du vill köpa.</li>
-            <li>Öppna Swish och ange numret nedan samt totalbeloppet.</li>
-            <li>Skriv vilka varor du köper och vilket gym du är på i meddelandet. Kontrollera mottagaren och godkänn betalningen i Swish.</li>
-          </ol>
-          <p className="mt-7 text-sm text-muted">Swishnummer</p>
-          <p className="mb-5 mt-2 select-all whitespace-nowrap text-2xl font-semibold tracking-wide">{shopConfig.swishNumber}</p>
-          <CopySwish number={shopConfig.swishNumber} />
-          <p className="text-sm leading-6 text-muted">Betalningen bekräftas i Swish. Den här sidan registrerar ingen order eller betalning.</p>
-        </section>
-      </div>
-      <section aria-labelledby="help-heading" className="mt-12 border-t border-line pt-8">
-        <h2 id="help-heading" className="text-xl font-semibold">Behöver du hjälp?</h2>
-        <a className="nav-link mt-3 inline-flex min-h-12 items-center break-all" href={`mailto:${shopConfig.email}`}>{shopConfig.email}</a>
+      <section aria-labelledby="products-heading" className="mt-8 sm:mt-10">
+        <div className="flex items-center justify-between gap-4 border-t border-line pt-6">
+          <h2 id="products-heading" className="text-xl font-semibold">Produkter & priser</h2>
+          <span className="text-xs text-muted">{products.length} produkter</span>
+        </div>
+        <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {products.map((product, index) => <li key={product.name} className="membership-card flex min-w-0 flex-col">
+            {product.image ? <div className="mb-5 rounded-md bg-[#1b201f]"><Image src={product.image} alt={product.name} width={480} height={480} sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw" priority={index === 0} className="h-48 w-full rounded-md object-contain sm:h-56" /></div> : <ProductIllustration kind={product.illustration} />}
+            {product.imageNote && <p className="-mt-3 mb-4 text-xs text-muted">{product.imageNote}</p>}
+            <h3 className="text-xl font-semibold leading-snug">{product.name}</h3>
+            {product.subtitle && <p className="mt-1 text-sm font-medium text-muted">{product.subtitle}</p>}
+            <p className="mt-3 text-sm leading-6 text-muted">{product.description}</p>
+            <p className="mt-auto pt-5 text-3xl font-semibold tracking-tight">{product.price} <span className="text-lg font-medium text-muted">kr</span></p>
+            <SwishPayment product={product} />
+          </li>)}
+        </ul>
+      </section>
+      <section aria-labelledby="help-heading" className="mt-10 border-t border-line pt-6">
+        <h2 id="help-heading" className="text-lg font-semibold">Behöver du hjälp?</h2>
+        <p className="mt-2 text-sm leading-6 text-muted">Swish: <span className="select-all whitespace-nowrap text-foreground">{shopConfig.swishNumber}</span>. Betalningen bekräftas i Swish.</p>
+        <a className="nav-link mt-2 inline-flex min-h-12 items-center break-all text-sm" href={`mailto:${shopConfig.email}`}>{shopConfig.email}</a>
       </section>
     </main>
     <SiteFooter />

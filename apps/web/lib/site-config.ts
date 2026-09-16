@@ -11,7 +11,7 @@ export const siteConfig = {
   name: "IW nära", url: "https://www.iwnara.se",
   title: "Gym i Timrå & Sundsvall – Sörberge & Skönsmon | IW nära",
   description: "Personliga gym i Sörberge, Timrå och Skönsmon, Sundsvall. Träna med appaccess, få hjälp med träning och kost och prova ett träningspass gratis.",
-  navigation: [{ label: "Om gymmet", href: "#om-gymmet" }, { label: "Bilder", href: "#bilder" }, { label: "Prova gratis", href: "#prova-gratis" }, { label: "Medlemskap", href: "#medlemskap" }, { label: "Kontakt", href: "#kontakt" }],
+  navigation: [{ label: "Om gymmet", href: "#om-gymmet" }, { label: "Bilder", href: "#bilder" }, { label: "Prova gratis", href: "#prova-gratis" }, { label: "Medlemskap", href: "#medlemskap" }, { label: "Vanliga frågor", href: "#faq" }, { label: "Kontakt", href: "#kontakt" }],
   support: "Hos oss betyder obemannat att du låser upp med din app och tränar på egen hand. Den personliga kontakten finns ändå nära. Vi lär känna våra medlemmar och finns ett samtal bort när du behöver hjälp med ett träningsupplägg, har frågor om kost eller stöter på något som krånglar. Du ska känna att du har någon att vända dig till.",
   team: "Vår personal är utbildade personliga tränare med kunskap inom både träning och kost. Vi utgår från dig, din erfarenhet och dina mål – oavsett om du tar ditt första steg in på ett gym eller vill utveckla träningen du redan gör.",
   trial: "Funderar du på att bli medlem? Välkommen att prova ett träningspass gratis. Vi visar dig gymmet och dess utrustning och hjälper dig att komma igång med ett träningsschema och ett individuellt program som passar just dig. Hör av dig så kommer vi överens om en tid för ditt besök och din genomgång.",
@@ -50,3 +50,4 @@ export const facilities: readonly Facility[] = [
     memberships: [{ name: "Medlemskap i Skönsmon", price: "Priser kommer", detail: "Medlemsalternativ och villkor publiceras här. Du som är intresserad får prova ett träningspass gratis." }],
   },
 ];
+

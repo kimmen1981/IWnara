@@ -7,6 +7,7 @@ import { facilityStructuredData, pageUrl } from "@/lib/seo";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Section } from "@/components/section";
+import { FacilityFaq } from "@/components/facility-faq";
 import { FacilityGallery } from "@/components/facility-gallery";
 
 type Props = { params: Promise<{ facility: string }> };
@@ -26,12 +27,6 @@ export default async function FacilityPage({ params }: Props) {
   if (!f) notFound();
   const hero = f.photos.find(p => p.src.includes("interior") || p.src.includes("strength")) ?? f.photos[0];
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(f.address)}`;
-  const faqs = [
-    { question: `När är gymmet i ${f.name} öppet?`, answer: f.openingNotice ? `${f.hours} Vi bygger för fullt och beräknar att gymmet är helt klart före årsskiftet 2026/2027. Därefter planerar vi för öppet dygnet runt med appaccess.` : `${f.hours}. Du låser upp med din app och tränar när det passar dig under öppettiderna.` },
-    { question: "Kan jag få hjälp även om gymmet är obemannat?", answer: siteConfig.support },
-    { question: "Vad ingår när jag provar gratis?", answer: "Du som är intresserad av ett medlemskap får ett gratis träningspass, en visning av gymmet och dess utrustning och hjälp med ett individuellt träningsschema. Kontakta oss för att komma överens om en tid." },
-    { question: "Kan ni hjälpa mig med träning och kost?", answer: siteConfig.team },
-  ];
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(facilityStructuredData(f)).replace(/</g, "\u003c") }} />
     <a className="skip-link" href="#main">Hoppa till innehållet</a><SiteHeader facility={f.name} />
@@ -56,8 +51,9 @@ export default async function FacilityPage({ params }: Props) {
       </div></section>
       <div className="page-width"><Section id="filosofi" number="02" title="Mycket gym. Mycket omtanke."><p className="body-copy">{siteConfig.philosophy}</p></Section></div>
       <section id="medlemskap" className="border-y border-line bg-surface py-16 sm:py-20" aria-labelledby="membership-heading"><div className="page-width"><p className="eyebrow text-muted">Medlemskap · {f.name}</p><h2 id="membership-heading" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Hitta ditt medlemskap.</h2><div className={`mt-9 grid gap-4 ${f.memberships.length > 1 ? "lg:grid-cols-3" : "max-w-2xl"}`}>{f.memberships.map(m => <article key={m.name} className="membership-card"><h3 className="text-lg font-medium">{m.name}</h3><p className="mt-7 text-3xl font-semibold">{m.price}</p><p className="mt-4 text-sm leading-6 text-muted">{m.detail}</p><a href="#kontakt" className="button mt-8 w-full">Fråga om medlemskap</a></article>)}</div></div></section>
-      <section className="page-width py-16 sm:py-20" aria-labelledby="faq-heading"><h2 id="faq-heading" className="text-3xl font-semibold tracking-tight">Vanliga frågor om IW nära {f.name}</h2><div className="mt-8">{faqs.map(q => <details key={q.question} className="border-b border-line py-5"><summary className="cursor-pointer text-lg font-medium focus-visible:outline-2 focus-visible:outline-offset-4">{q.question}</summary><p className="body-copy mt-4 max-w-3xl">{q.answer}</p></details>)}</div></section>
+      <FacilityFaq facility={f} />
       <div className="page-width"><Section id="kontakt" number="03" title={`Välkommen till ${f.name}.`}><p className="body-copy mb-8">Hör av dig för att prova gymmet, få hjälp att komma igång eller prata om ditt medlemskap. Vi kommer överens om en tid så att du får en personlig genomgång.</p><dl className="grid gap-8 sm:grid-cols-2"><div><dt className="detail-label">Adress</dt><dd className="body-copy">{f.address}<a className="nav-link mt-3 block text-sm" href={mapUrl}>Visa vägen i Google Maps ↗</a></dd></div><div><dt className="detail-label">Öppettider</dt><dd className="body-copy">{f.hours}</dd></div><div><dt className="detail-label">Kontakt</dt><dd className="body-copy">{f.email ? <a className="nav-link" href={`mailto:${f.email}?subject=${encodeURIComponent(`Provträning / medlemskap – ${f.name}`)}`}>{f.email}</a> : null}{f.phones.map(phone => <a key={phone} className="nav-link mt-3 block" href={`tel:+46${phone.replace(/[^0-9]/g, "").slice(1)}`}>{phone}</a>)}</dd></div></dl></Section></div>
     </main><SiteFooter />
   </>;
 }
+
