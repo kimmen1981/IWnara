@@ -13,7 +13,7 @@ Genomlästa tidigare uppgifter: medlemsregistrering, uppföljningen med neongrö
 - Skönsmon: november 2026, under konstruktion, 299 kr/mån vid förbokning och dygnet runt efter öppning. Inga erbjudanden om besök/visning/provträning innan öppning. Ingen exakt öppningsdag har hittats.
 - Sörberges bekräftade separata priser 389/299 kr och 99 kr/pass bevaras. Det generella 299-påståendet i utkastet 18 september överförs inte till vuxenpriset i Sörberge; senaste uppdraget anger 299 för Skönsmons förbokning.
 - /faq samlar FAQ med länk till Skönsmons särskilda frågor. /integritet beskriver kontaktformulärets hantering.
-- Butikens QR-kod pekar till det verifierade Vercel-projektets nuvarande domän https://iw-iw-nara.vercel.app/butik. Byt mål och generera ny QR om produktionsdomänen ändras.
+- Butikens QR-kod pekar till det verifierade Vercel-projektets nuvarande domän https://iwnara-nine.vercel.app/butik. Byt mål och generera ny QR om produktionsdomänen ändras.
 - Produkttexter för ashwagandha, NAD och Rewind har gjorts försiktigare utan medicinska effektlöften. NAD 30 kapslar behåller den tidigare märkta illustrationen; Whey-bilden anger att smak kan variera.
 
 ## E-postanslutning
@@ -42,3 +42,5 @@ Vercel CLI:s befintliga token gav HTTP 403 med `invalidToken: true`. Inloggad Ve
 
 Slutlig lokal kontroll: alla 21 sid-/viewportkombinationer godkända, noll webbläsarfel, API-regressioner godkända. Vercel-dashboarden visar No Environment Variables Added.
 
+
+Publicering: återställningen pushades till main och Vercel markerade produktionsbygget Ready. Den primära publika domänen är https://iwnara-nine.vercel.app; den separata iw-iw-nara-adressen kräver Vercel-inloggning. Alla 21 browserkontroller och samtliga klickflöden klarades även utan inloggning på den publika domänen, med noll webbläsarfel. Butikens QR-kod korrigerades till denna publika adress. www.iwnara.se visar Verification Required i Vercel och har inte ändrats under arbetet.

@@ -45,7 +45,7 @@ export default function ShopPage() {
         <h2 id="help-heading" className="text-lg font-semibold">Behöver du hjälp?</h2>
         <p className="mt-2 text-sm leading-6 text-muted">Swish: <span className="select-all whitespace-nowrap text-foreground">{shopConfig.swishNumber}</span>. Betalningen bekräftas i Swish.</p>
         <a className="nav-link mt-2 inline-flex min-h-12 items-center break-all text-sm" href={`mailto:${shopConfig.email}`}>{shopConfig.email}</a>
-        <details className="mt-6 rounded-lg border border-line p-5"><summary className="flex min-h-12 cursor-pointer items-center font-medium">QR-kod till butiken</summary><div className="mt-4"><Image src="/butik/qr-butik.svg" width={200} height={200} alt="QR-kod till IW näras butik på iw-iw-nara.vercel.app/butik" unoptimized /><p className="mt-3 text-sm leading-6 text-muted">Spara eller skriv ut koden för gymmet.</p><a className="button mt-4" href="/butik/qr-butik.svg" download>Ladda ner QR-koden</a></div></details>
+        <details className="mt-6 rounded-lg border border-line p-5"><summary className="flex min-h-12 cursor-pointer items-center font-medium">QR-kod till butiken</summary><div className="mt-4"><Image src="/butik/qr-butik.svg" width={200} height={200} alt="QR-kod till IW näras butik på iwnara-nine.vercel.app/butik" unoptimized /><p className="mt-3 text-sm leading-6 text-muted">Spara eller skriv ut koden för gymmet.</p><a className="button mt-4" href="/butik/qr-butik.svg" download>Ladda ner QR-koden</a></div></details>
       </section>
     </main>
     <SiteFooter />
