@@ -16,7 +16,7 @@ export function SiteFooter() {
             <p className="mt-4 max-w-md text-sm leading-6 text-muted">
               Frågor om medlemskap, träning eller våra anläggningar? Hör av dig via mejl eller ring någon av oss direkt.
             </p>
-            <a className="nav-link mt-5 inline-block text-base font-medium" href={`mailto:${siteConfig.email}`}>
+            <a className="nav-link mt-5 inline-flex min-h-12 items-center text-base font-medium" href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}
             </a>
           </div>
@@ -38,9 +38,9 @@ export function SiteFooter() {
 
         <div className="mt-9 flex flex-col gap-4 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>IW nära <span className="mx-2 text-white/30">/</span> Ditt lokala gym.</p>
-          <div className="flex gap-5">
+          <div className="site-footer-links flex flex-wrap gap-x-5 gap-y-1">
             <Link className="nav-link" href="/sorberge">Sörberge</Link>
-            <Link className="nav-link" href="/skonsmon">Skönsmon</Link>
+            <Link className="nav-link" href="/skonsmon">Skönsmon</Link><Link className="nav-link" href="/medlemskap">Medlemskap</Link><Link className="nav-link" href="/butik">Butik</Link><Link className="nav-link" href="/faq">FAQ</Link>
           </div>
         </div>
       </div>

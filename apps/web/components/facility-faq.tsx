@@ -10,7 +10,7 @@ export function FacilityFaq({ facility }: { facility: Facility }) {
     </div>
     <nav aria-label="FAQ-kategorier" className="faq-categories mt-8 flex flex-wrap gap-2">{groups.map(group => <a key={group.id} className="button" href={`#faq-${group.id}`}>{group.title}</a>)}</nav>
     <div className="mt-10 grid items-start gap-10 lg:grid-cols-[16rem_minmax(0,1fr)]">
-      <aside className="rounded-lg border border-line bg-surface p-6"><p className="eyebrow text-muted">IW nära {facility.name}</p><p className="mt-4 text-lg font-medium">En personlig start</p><p className="mt-3 text-sm leading-7 text-muted">Prova ett pass gratis och få en genomgång av gymmet. Vi kommer överens om en tid tillsammans.</p><a className="nav-link mt-4 inline-flex min-h-12 items-center text-sm" href="#kontakt">Prata med oss →</a></aside>
+      <aside className="rounded-lg border border-line bg-surface p-6"><p className="eyebrow text-muted">IW nära {facility.name}</p><p className="mt-4 text-lg font-medium">En personlig start</p><p className="mt-3 text-sm leading-7 text-muted">{facility.openingNotice ? "Förboka för 299 kr/mån inför öppningen i november 2026. Vi kontaktar dig och hjälper dig vidare." : "Prova ett pass gratis och få en genomgång av gymmet. Vi kommer överens om en tid tillsammans."}</p><a className="nav-link mt-4 inline-flex min-h-12 items-center text-sm" href="#kontakt">Prata med oss →</a></aside>
       <div className="min-w-0 space-y-10">{groups.map(group => <section key={group.id} id={`faq-${group.id}`} aria-labelledby={`faq-${group.id}-heading`}>
         <h3 id={`faq-${group.id}-heading`} className="mb-4 text-xl font-semibold">{group.title}</h3>
         <div className="overflow-hidden rounded-lg border border-line bg-surface">{group.items.map(item => <details key={item.id} id={`faq-${item.id}`} className="faq-item">
@@ -19,6 +19,6 @@ export function FacilityFaq({ facility }: { facility: Facility }) {
         </details>)}</div>
       </section>)}</div>
     </div>
-    <div className="mt-12 rounded-lg border border-line bg-surface p-6 sm:p-8"><h3 className="text-2xl font-semibold">Ska vi ta första steget tillsammans?</h3><p className="body-copy mt-3 max-w-2xl">Du behöver inte ha koll på allt innan du hör av dig. Vi hjälper dig med frågor om gymmet och kommer överens om en tid om du vill prova.</p><a className="button button-light mt-6" href="#kontakt">Kontakta oss om gratis provträning</a></div>
+    <div className="mt-12 rounded-lg border border-line bg-surface p-6 sm:p-8"><h3 className="text-2xl font-semibold">Ska vi ta första steget tillsammans?</h3><p className="body-copy mt-3 max-w-2xl">Du behöver inte ha koll på allt innan du hör av dig. Vi hjälper dig med frågor om träning, medlemskap och hur du kommer igång.</p><a className="button button-light mt-6" href={facility.openingNotice ? "/skonsmon#forboka" : "/medlemskap#starta"}>{facility.openingNotice ? "Förboka medlemskap – 299 kr/mån" : "Välj gratis provträning"}</a></div>
   </section>;
 }
