@@ -8,6 +8,12 @@ export type Facility = {
 };
 export const siteConfig = {
   phones: ["070-753 92 39", "076-779 21 21", "072-317 21 62"],
+  contacts: [
+    { name: "Lars", role: "Ägare", phone: "070-753 92 39" },
+    { name: "Stefan", role: "Ägare", phone: "076-779 21 21" },
+    { name: "Kim", role: "Driftansvarig", phone: "072-317 21 62" },
+  ],
+  email: "info@iwnara.se",
   name: "IW nära", url: "https://www.iwnara.se",
   title: "Gym i Timrå & Sundsvall – Sörberge & Skönsmon | IW nära",
   description: "Personliga gym i Sörberge, Timrå och Skönsmon, Sundsvall. Träna med appaccess, få hjälp med träning och kost och prova ett träningspass gratis.",
